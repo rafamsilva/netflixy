@@ -7,7 +7,7 @@ import androidx.recyclerview.widget.RecyclerView
 import com.example.netflixy.helpers.load
 import kotlinx.android.synthetic.main.movie_item.view.*
 
-class MoviesAdapter(private val movies: List<Movie>): RecyclerView.Adapter<MoviesAdapter.ViewHolder>() {
+class MoviesAdapter(private val movies: ArrayList<Movie>): RecyclerView.Adapter<MoviesAdapter.ViewHolder>() {
 
     class ViewHolder(itemView: View) : RecyclerView.ViewHolder(itemView)
 

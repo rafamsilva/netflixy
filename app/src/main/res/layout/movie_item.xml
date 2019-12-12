@@ -1,8 +1,11 @@
-<androidx.cardview.widget.CardView xmlns:android="http://schemas.android.com/apk/res/android"
+<androidx.cardview.widget.CardView
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="wrap_content"
-    android:layout_margin="5dp">
+    android:layout_margin="5dp"
+    app:cardBackgroundColor="@color/backgroundCard">
 
     <LinearLayout
         android:layout_width="match_parent"
@@ -19,15 +22,18 @@
             android:id="@+id/movie_title"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:textSize="20sp"
-            tools:text="Titulo" />
+            android:textSize="15sp"
+            tools:text="@"
+            android:textStyle="bold"
+            android:textColor="@color/colorWhite"/>
 
         <TextView
             android:id="@+id/movie_year"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:textSize="10sp"
-            tools:text="Ano" />
+            tools:text="Ano"
+            android:textColor="@color/colorBlue"/>
 
     </LinearLayout>
 

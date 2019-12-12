@@ -17,9 +17,8 @@ class MainActivity : AppCompatActivity() {
         val context = this
         call.enqueue(object: Callback<MovieList> {
             override fun onResponse(call: Call<MovieList>, response: Response<MovieList>) {
-                d("teste", response.body().toString())
                 val intent = Intent(context, MoviesActivity::class.java)
-                intent.putParcelableArrayListExtra("movies", ArrayList(response.body()?.search ?: listOf()))
+                intent.putParcelableArrayListExtra("movies", ArrayList(response.body()?.search?.sortedBy { it.year } ?: listOf()))
                 startActivity(intent)
             }
 
