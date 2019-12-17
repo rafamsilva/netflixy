@@ -7,7 +7,9 @@ import androidx.recyclerview.widget.RecyclerView
 import com.example.netflixy.helpers.load
 import kotlinx.android.synthetic.main.movie_item.view.*
 
-class MoviesAdapter(private val movies: ArrayList<Movie>): RecyclerView.Adapter<MoviesAdapter.ViewHolder>() {
+class MoviesAdapter: RecyclerView.Adapter<MoviesAdapter.ViewHolder>() {
+
+    private var movies: ArrayList<Movie> = ArrayList()
 
     class ViewHolder(itemView: View) : RecyclerView.ViewHolder(itemView)
 
@@ -23,7 +25,6 @@ class MoviesAdapter(private val movies: ArrayList<Movie>): RecyclerView.Adapter<
     override fun onBindViewHolder(holder: ViewHolder, position: Int) {
         val movie = movies[position]
         bindView(movie, holder.itemView)
-
     }
 
     private fun bindView(movie: Movie, view: View) {
@@ -33,5 +34,11 @@ class MoviesAdapter(private val movies: ArrayList<Movie>): RecyclerView.Adapter<
             movie_year.text = movie.year.toString()
         }
 
+    }
+
+    fun setItems(item: List<Movie>) {
+        movies.clear()
+        movies.addAll(item)
+        notifyDataSetChanged()
     }
 }

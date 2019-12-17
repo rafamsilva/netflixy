@@ -2,4 +2,5 @@
     <string name="app_name">Netflixy</string>
     <string name="movie_list_title">Título</string>
     <string name="movie_list_year">Ano</string>
+    <string name="search_title">Buscar</string>
 </resources>
