@@ -1,8 +1,10 @@
 package com.example.netflixy
 
+import android.content.Intent
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import androidx.core.content.ContextCompat.startActivity
 import androidx.recyclerview.widget.RecyclerView
 import com.example.netflixy.helpers.load
 import kotlinx.android.synthetic.main.movie_item.view.*
@@ -25,6 +27,11 @@ class MoviesAdapter: RecyclerView.Adapter<MoviesAdapter.ViewHolder>() {
     override fun onBindViewHolder(holder: ViewHolder, position: Int) {
         val movie = movies[position]
         bindView(movie, holder.itemView)
+        holder.itemView.setOnClickListener {
+            val intent = Intent(holder.itemView.context, MovieDetailActivity::class.java)
+            intent.putExtra("imdbID", movie.imdbID)
+            startActivity(holder.itemView.context, intent, null)
+        }
     }
 
     private fun bindView(movie: Movie, view: View) {
@@ -33,7 +40,6 @@ class MoviesAdapter: RecyclerView.Adapter<MoviesAdapter.ViewHolder>() {
             movie_title.text = movie.title
             movie_year.text = movie.year.toString()
         }
-
     }
 
     fun setItems(item: List<Movie>) {

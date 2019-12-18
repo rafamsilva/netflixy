@@ -5,12 +5,12 @@ import com.google.gson.annotations.SerializedName
 import kotlinx.android.parcel.Parcelize
 
 @Parcelize
-data class Movie (
+open class Movie : Parcelable {
     @SerializedName("Title")
-    val title: String,
+    var title: String = ""
     @SerializedName("Year")
-    val year: Int,
+    var year: Int = 0
     @SerializedName("Poster")
-    val poster: String,
-    val imdbID: String
-) : Parcelable
+    var poster: String = ""
+    val imdbID: String = ""
+}

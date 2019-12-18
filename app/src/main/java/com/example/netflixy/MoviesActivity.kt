@@ -9,6 +9,7 @@ import android.os.Handler
 import android.util.Log
 import android.view.Menu
 import android.widget.SearchView
+import android.widget.TextView
 import androidx.recyclerview.widget.GridLayoutManager
 import kotlinx.android.synthetic.main.activity_movies.*
 import kotlinx.coroutines.*
@@ -21,6 +22,13 @@ class MoviesActivity : AppCompatActivity() {
     private lateinit var viewAdapter: MoviesAdapter
     private var searchJob: Job? = null
     private val coroutineScope: CoroutineScope = CoroutineScope(Dispatchers.Main)
+
+    override fun onCreate(savedInstanceState: Bundle?) {
+        super.onCreate(savedInstanceState)
+        setContentView(R.layout.activity_movies)
+        handleIntent(intent)
+        setView()
+    }
 
     override fun onCreateOptionsMenu(menu: Menu): Boolean {
         menuInflater.inflate(R.menu.options_menu, menu)
@@ -37,8 +45,10 @@ class MoviesActivity : AppCompatActivity() {
                     searchJob?.cancel()
                     searchJob = coroutineScope.launch {
                         newText?.let {
-                            delay(1000)
+                            delay(500)
                             callService(newText)
+                        } ?: run {
+                            movies_no_data.visibility = TextView.VISIBLE
                         }
                     }
                     return false
@@ -46,17 +56,6 @@ class MoviesActivity : AppCompatActivity() {
             })
         }
         return true
-    }
-
-    override fun onCreate(savedInstanceState: Bundle?) {
-        super.onCreate(savedInstanceState)
-        setContentView(R.layout.activity_movies)
-        handleIntent(intent)
-        setView()
-    }
-
-    override fun onNewIntent(intent: Intent) {
-        handleIntent(intent)
     }
 
     private fun handleIntent(intent: Intent) {
@@ -71,9 +70,14 @@ class MoviesActivity : AppCompatActivity() {
             val call = RetrofitInitializer().apiService().searchMovies(name = it)
             call.enqueue(object : Callback<MovieList> {
                 override fun onResponse(call: Call<MovieList>, response: Response<MovieList>) {
+                    movies_no_data.visibility = TextView.VISIBLE
                     viewAdapter.setItems(response.body()?.search?.sortedBy {movies ->
                         movies.year
                     } ?: listOf())
+
+                    response.body()?.search?.let {
+                        movies_no_data.visibility = TextView.INVISIBLE
+                    }
                 }
 
                 override fun onFailure(call: Call<MovieList>, t: Throwable) {
