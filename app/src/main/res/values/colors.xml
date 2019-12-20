@@ -6,4 +6,5 @@
     <color name="backgroundCard">#1B252F</color>
     <color name="colorBlue">#00A3DB</color>
     <color name="colorWhite">#FFFFFF</color>
+    <color name="colorBlueDetail">#8197a4</color>
 </resources>

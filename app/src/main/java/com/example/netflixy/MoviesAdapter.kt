@@ -36,7 +36,7 @@ class MoviesAdapter: RecyclerView.Adapter<MoviesAdapter.ViewHolder>() {
 
     private fun bindView(movie: Movie, view: View) {
         with(view) {
-            movie_poster.load(movie.poster)
+            movie_poster.load(movie.poster, movie_poster)
             movie_title.text = movie.title
             movie_year.text = movie.year.toString()
         }

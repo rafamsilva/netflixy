@@ -8,7 +8,7 @@ import java.util.*
 @Parcelize
 data class MovieDetail (
     @SerializedName("Released")
-    val released: Date,
+    val released: String,
     @SerializedName("Runtime")
     val runtime: String,
     @SerializedName("Genre")
@@ -17,6 +17,11 @@ data class MovieDetail (
     val director: String,
     @SerializedName("Actors")
     val actors: String,
-    @SerializedName("Metascore")
-    val metascore: Int
+    @SerializedName("Language")
+    val language: String,
+    @SerializedName("Plot")
+    val description: String,
+    @SerializedName("Production")
+    val production: String,
+    val imdbRating: Float
 ) : Parcelable, Movie()

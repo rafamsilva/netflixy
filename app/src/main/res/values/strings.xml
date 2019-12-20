@@ -3,5 +3,7 @@
     <string name="movie_list_title">Título</string>
     <string name="movie_list_year">Ano</string>
     <string name="search_title">Buscar</string>
-    <string name="no_data_show">Sem dados para mostrar</string>
+    <string name="no_data_show">Faça uma busca</string>
+    <string name="movie_detail_imdb">0</string>
+    <string name="movie_detail_runtime">0h 0min</string>
 </resources>
