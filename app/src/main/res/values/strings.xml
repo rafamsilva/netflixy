@@ -6,4 +6,10 @@
     <string name="no_data_show">Faça uma busca</string>
     <string name="movie_detail_imdb">0</string>
     <string name="movie_detail_runtime">0h 0min</string>
+    <string name="movie_detail_description">Descrição</string>
+    <string name="movie_detail_actors">Atores</string>
+    <string name="movie_detail_production">Produtora</string>
+    <string name="movie_detail_director">Diretor</string>
+    <string name="movie_detail_language">Idiomas</string>
+    <string name="movie_detail_genre">Gêneros</string>
 </resources>
